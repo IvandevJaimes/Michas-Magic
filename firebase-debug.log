@@ -1,0 +1,21 @@
+[debug] [2025-07-21T22:13:06.982Z] ----------------------------------------------------------------------
+[debug] [2025-07-21T22:13:06.999Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-07-21T22:13:07.002Z] CLI Version:   14.11.0
+[debug] [2025-07-21T22:13:07.002Z] Platform:      win32
+[debug] [2025-07-21T22:13:07.004Z] Node Version:  v22.14.0
+[debug] [2025-07-21T22:13:07.006Z] Time:          Mon Jul 21 2025 15:13:07 GMT-0700 (hora de verano del Pacífico)
+[debug] [2025-07-21T22:13:07.007Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-07-21T22:13:07.059Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-07-21T22:13:07.061Z] > authorizing via signed-in user (jivan8764@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Admin\Downloads\zoutoys-html\zoutoys-html\Amigurbis
+

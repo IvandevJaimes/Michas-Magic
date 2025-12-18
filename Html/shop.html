@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon"href="./Untitled design.png">
+
+  <title> Micha’s Magic - Tienda </title>
+  <script src="../js/components.js" defer></script>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom styles for this template -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../css/responsive.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/shop.css">
+  <link rel="stylesheet" href="../../css/components.css">
+  
+</head>
+
+
+<!-- Pantalla de carga -->
+<div id="pantallaCarga">
+  <div class="loaderContainer">
+    <div class="loader"></div>
+    <p>Cargando...</p>
+  </div>
+</div>
+
+<!-- Pantalla sin conexión -->
+<div id="pantallaSinConexion">
+  <div class="loaderContainer">
+    <img src="./wifi.png" width="80px" height="90px">
+    <p id="mensajeConexion">Sin conexión a Internet</p>
+    <small>Esperando reconexión...</small>
+  </div>
+</div>
+
+<style>
+  #pantallaCarga, #pantallaSinConexion {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: linear-gradient(to bottom right, #cce6ff, #e0f2ff);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    pointer-events: all !important;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #pantallaSinConexion {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loaderContainer {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .loader {
+    border: 6px solid #b3daff;
+    border-top: 6px solid #0077cc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px auto;
+  }
+
+  #pantallaCarga p,
+  #pantallaSinConexion p {
+    color: #004d80;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  #pantallaSinConexion p {
+    margin-top: 0;
+  }
+
+  #pantallaSinConexion small {
+    color: #004d80;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 600px) {
+    .loader {
+      width: 40px;
+      height: 40px;
+      border-width: 4px;
+    }
+
+    #pantallaCarga p,
+    #pantallaSinConexion p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- pantalla de error -->
+
+<div id="errorServidor" class="error-servidor">
+  <div class="error-contenido">
+    <img src="./error.png" alt="Error servidor" class="error-imagen">
+    <h2>¡Ups! Algo salió mal en el servidor</h2>
+    <p>No pudimos procesar tu solicitud. Intenta recargar o volver al inicio.</p>
+    <div class="botones-error">
+      <button onclick="location.href='/'">Volver al inicio</button>
+      <button onclick="location.reload()">Recargar página</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .error-servidor {
+    position: fixed;
+    inset: 0;
+    background-color: #e3f2fd;
+    color: #0d47a1;
+    display: none;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .error-contenido {
+    text-align: center;
+    max-width: 500px;
+    animation: fadeIn 0.6s ease;
+  }
+
+  .error-imagen {
+    width: 150px;
+    margin-bottom: 1rem;
+  }
+
+  .botones-error {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .botones-error button {
+    background-color: #0d47a1;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .botones-error button:hover {
+    background-color: #1565c0;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<body class="sub_page" id="bodyscroll">
+
+  
+  
+  
+
+  <div class="hero_area">
+
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a href="../index.html">
+            <div class="logo-michas-magic-up">
+              <span>Micha's</span> <span>Magic</span>
+            </div>
+  
+            <style>
+             
+             .logo-michas-magic-up{
+                font-family: sans-serif;
+                font-weight: 800;
+                font-size: 25px;
+                color: #142e97 !important;
+                letter-spacing: 0.10em;
+                display: inline-block;
+                user-select: none;
+              }
+  
+              .logo-michas-magic-up span:last-child {
+                color: #ffffff;
+              }
+  
+              @media (max-width: 510px) {
+                .logo-michas-magic-up{
+                  font-size: 21px;
+                  letter-spacing: 0.10em;
+                }
+              }
+              
+             
+  
+              
+            </style>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link" href="../index.html">Inicio </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html">Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Tienda</a>
+              </li>
+
+              
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- shop section -->
+  <div class="shopsec">
+
+
+<!-- HTML -->
+<div id="mensajeFlotante" class="floating-message hidden">
+ 
+</div>
+<div id="errorToast" class="toast-error">
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+  <span>Lo sentimos, no pudimos procesar tu pedido.</span>
+</div>
+
+
+<style>
+
+  .mensaje-carga {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background-color: #002a4d;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    animation: slideDown 0.5s ease-out forwards, slideUp 0.5s ease-in forwards 3.5s;
+  }
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid white;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes slideDown {
+    to {
+      transform: translateX(-50%) translateY(20px);
+    }
+  }
+
+  @keyframes slideUp {
+    to {
+      transform: translateX(-50%) translateY(-100%);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .mensaje-carga {
+      padding: 10px 16px;
+      font-size: 10px;
+      max-width: 250px;
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border-width: 2px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="mensaje-carga" id="mensaje-carga">
+<div class="spinner"></div>
+<span>Actualizando productos...</span>
+</div>
+
+<!-- CSS -->
+<style>
+  .floating-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    z-index: +99999999;
+    max-width: 90vw;
+    width: fit-content;
+    animation: slideIn 0.6s ease forwards, fadeOut 0.5s ease 4s forwards;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  .floating-message img {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+
+  .floating-message p {
+    margin: 0;
+    word-wrap: break-word;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    to {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .floating-message {
+      top: 15px;
+      right: 15px;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      gap: 10px;
+    }
+
+    .floating-message img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+
+<!-- Modal -->
+<div id="modalcustom" class="modalcustom">
+  <div class="modalcustom-contenido">
+    <span class="cerrar-modalcustom" id="cerrarModalcustom">✕</span>
+    <h2>Encargar tu diseño personalizado</h2>
+   
+    
+
+   
+    <form id="formModalcustom">
+      
+      <input placeholder="Nombre" id="nombre" type="text" required>
+      <br>
+      <br>
+     
+      
+      <input placeholder="Apellido" id="apellido" type="text" required>
+      <br>
+      <br>
+    
+
+      <div style="display: flex; align-items: center;">
+        <!-- Input fijo con el prefijo -->
+        <input
+          type="text"
+          value="+54 9"
+          readonly
+          tabindex="-1"
+          style="width: 55px; padding: 8px; background-color: #f9fbfd; border: 1px solid #cfd9e0; border-radius: 8px 0 0 8px;"
+        >
+      
+        <!-- Input donde el usuario escribe el resto del número -->
+        <input
+          id="telefono"
+          type="number"
+          required
+          maxlength="10"
+          placeholder="Ingresa tu Número de Teléfono"
+          style="border-bottom-left-radius:0px ; border-top-left-radius: 0px; border-bottom-right-radius:8px ; border-top-right-radius: 8px;"
+
+         
+        >
+      </div>
+      
+
+     
+      <br>
+    
+    
+      <input placeholder="Nombre del Producto" id="nombreproducto" type="text" required>
+      <br>
+      <br>
+    
+      
+      <textarea placeholder="Descríbenos tu producto:" id="descripcion" rows="3"></textarea>
+      <br>
+      <br>
+    
+     
+      <input placeholder="Tamaño del Producto (En cm)" id="tamano" type="number" min="1" required>
+      <br>
+      <br>
+    
+      
+      <select id="tipo" required>
+        <option value="">Selecciona tipo</option>
+        <option>Amigurumi</option>
+        <option>Centro de mesa</option>
+        <option>Souvenir</option>
+      </select>
+    
+      <label>Imagen de referencia:</label>
+      <input id="urlImagen" type="url" placeholder="Pega una URL de imagen">
+    
+      <label>Cantidad:</label>
+      <div class="modalcustom-contador">
+        <button type="button" id="restarModalcustom">−</button>
+        <input type="number" id="cantidadModalcustom" value="1" min="1" max="99" style="pointer-events:none; user-select:none;">
+        <button type="button" id="sumarModalcustom">+</button>
+      </div>
+      <br>
+    
+     
+      <select id="pago" required>
+        <option value="">Selecciona método de pago</option>
+        <option>Efectivo</option>
+        <option>Transferencia</option>
+      </select>
+      <hr style="background-color: #c7e4ffdc; border-radius: 10px ; height: 1.5px; margin-bottom: 30px; margin-top: 30px;">
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; ">
+        ⚠️ El precio variará según el tamaño del producto.<br>
+        🕒 Una vez hecho el pedido, coordinaremos el costo total y tiempo estimado de entrega.
+      </p>
+    
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; ">
+        ⚠️ Para realizar tu pedido por WhatsApp, asegurate de tener la aplicación instalada en tu celular y/o en tu computadora.<br>
+      </p>
+    
+      <button  id="enviarwp" class="modalcustom-enviar"><i class="fab fa-whatsapp"></i>Encargar por WhatsApp</button>
+
+      <button id="enviarweb" class="modalcustom-enviar btn-envio">
+        <span id="textprocesando" class="btn-envio-texto">Encargar desde la web</span>
+        <span id="spinnerprocesando" class="btn-envio-spinner hidden"></span>
+        
+      </button>
+          
+    
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; ">
+        📩 Esta opción registra tu pedido en nuestro sistema. Nos comunicaremos con vos para confirmar los detalles y el costo final.
+      </p>
+    </form>
+    
+  </div>
+</div>
+
+    
+    
+
+    <div class="buscador-filtros">
+      <div class="busqueda-wrapper">
+        <input type="text" id="buscador" placeholder="Buscar producto...">
+        <button id="limpiarBusqueda" title="Limpiar">✕</button>
+      </div>
+      <div class="custom-select-wrapper">
+        <div class="custom-select" id="filtroCategoria">
+          <div class="selected">Filtrar</div>
+          <div class="options hidden">
+            <div class="option" data-value="">Todas las categorías</div>
+            <div class="option" data-value="Amigurumi">Amigurumis</div>
+            <div class="option" data-value="Centro de mesa">Centros de mesa</div>
+            <div class="option" data-value="Souvenir">Souvenirs</div>
+          </div>
+        </div>
+      </div>
+      <!-- Botón fijo dentro de la sección de filtros -->
+      <button class="pedido-personalizado fijo" id="abrirModalcustom">
+        Encargar diseño personalizado
+      </button>
+
+      <!-- Botón flotante (oculto inicialmente) -->
+      <button id="botonFlotante" class="pedido-personalizado flotante hidden">
+        <img src="./notebook.png" alt="">
+      </button>
+      
+    </div>
+
+
+    <div id="pantallaSinResultados" class="pantalla-no-resultados hidden">
+      <img src="../Html/no-results.png" alt="Sin resultados" class="imagen-no-resultados">
+      <h2>No hay coincidencias con tu búsqueda</h2>
+      <p>Probá con otro nombre o categoría.</p>
+    </div>
+    
+    <div id="seccionNuevos">
+      <h2 class="tituloseccion">Nuevos Diseños</h2>
+      <div class="carrousel" id="carrouselNuevos"></div>
+    </div>
+  
+    <div id="seccionAmigurumis">
+      <h2 class="tituloseccion">Amigurumis</h2>
+      <div id="amigurumis" class="cardsContainer"></div>
+    </div>
+  
+    <div id="seccionCentros">
+      <h2 class="tituloseccion">Centros de Mesa</h2>
+      <div id="centrosMesa" class="cardsContainer"></div>
+    </div>
+  
+    <div id="seccionSouvenirs">
+      <h2 class="tituloseccion">Souvenirs</h2>
+      <div id="souvenirs" class="cardsContainer"></div>
+    </div>
+  
+    
+  </div>
+  <!-- end shop section -->
+<!-- Modal -->
+
+   <!-- Modal Producto -->
+<div id="modalProducto" class="modal hidden" role="dialog" aria-modal="true">
+  
+  <div class="modal-content" id="cuerpomodalcont">
+    <div id="mensajeActualizado" class="mensaje-actualizado hidden">
+      🔄 Hemos actualizado este producto recientemente. Verificá los nuevos detalles antes de continuar.
+    </div>
+    <div id="overlayEliminado" class="overlay-eliminado hidden">
+      <p class="mensaje-overlay" style="color: white !important;">
+        ❌ Lo sentimos. Este producto fue eliminado recientemente.<br>
+        Podés elegir otro o hacer un pedido personalizado.
+      </p>
+    </div>
+   
+    
+    
+    <button class="close-btn" id="cerrarProducto">✕</button>
+    <img id="modalImagen" src="" alt="" class="modal-img" />
+    <span id="spannuevo2" style="display: none;" class="spannuevo2"><b>NUEVO</b></span>
+    <h2 id="modalNombre"></h2>
+  
+    <div class="modaldesc">
+      <p id="modalDescripcion"></p>
+    </div>
+  
+    <div class="informarcion">
+      <p><strong>Precio:</strong> <span id="modalPrecio"></span></p>
+      <p><strong>Tipo:</strong> <span id="modalTipo"></span></p>
+      <p><strong>Tamaño:</strong> <span id="modalTamano"></span></p>
+      <p><strong>Unidades disponibles:</strong> <span id="modalCantidadDisponible"></span></p>
+      <span id="sinstock" style="font-weight: bold; color: #004d80; display: none;">Seleccioná cantidad de unidades a encargar:</span>
+      <div class="modalcustom-contador">
+        <button type="button" id="restarModalcustom2">−</button>
+        <input type="number" id="cantidadModalcustom2" value="1" min="1">
+        <button type="button" id="sumarModalcustom2">+</button>
+      </div>
+      <br>
+      <div class="disponile">
+        <p><strong>Disponibilidad:</strong> <span id="modalDisponible"></span></p>
+      </div>
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; margin-bottom: 30px;" id="disponibleInfo">
+      
+      </p>
+      <hr style="background-color: #c7e4ffdc; border-radius: 10px ; height: 1.5px; margin-bottom: 20px;">
+    </div>
+  
+    <!-- FORMULARIO REAL -->
+ 
+    <form id="formEncargo" class="form-grupo-modal" >
+      <p><strong>Completa el siguiente formulario para realizar el pedido:</strong></p>
+      <input type="text" id="inputNombreApellido" placeholder="Nombre y Apellido" required>
+      <div style="display: flex; align-items: center;">
+        <!-- Input fijo con el prefijo -->
+        <input
+          disabled 
+          type="text"
+          value="+54 9"
+          readonly
+          tabindex="-1"
+          style="width: 55px; padding: 8px; background-color: #f9fbfd; border: 1px solid #cfd9e0; border-radius: 8px 0 0 8px; "
+        >
+        <input type="tel" id="inputTelefono" placeholder="Teléfono" required style="border-bottom-left-radius:0px ; border-top-left-radius: 0px; border-bottom-right-radius:8px ; border-top-right-radius: 8px;">
+       
+      </div>
+
+      
+      <select id="inputMetodoPago" required>
+        <option value="" disabled selected hidden>Método de pago</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="transferencia">Transferencia</option>
+      </select>
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; ">
+        ⚠️ Para realizar tu pedido por WhatsApp, asegurate de tener la aplicación instalada en tu celular y/o en tu computadora.<br>
+      </p>
+      <span id="btnEncargarwp" class="wpbtn">
+        <i class="fab fa-whatsapp"></i>
+        <button type="submit" id="btnEncargar">Encargar por WhatsApp</button>
+      </span>
+
+      <button type="submit" id="enviarweb1" class="enviarwebbtn" style="display: flex; align-items: center; justify-content: center;">
+          <span id="textprocesando1" class="btn-envio-texto">Encargar desde la web</span>
+          <span id="spinnerprocesando1" class="btn-envio-spinner1 hidden"></span>
+      </button>
+      <p class="modalcustom-aclaracion" style="font-size: 12px !important; font-weight: bold; ">
+        📩 Esta opción registra tu pedido en nuestro sistema. Nos comunicaremos con vos en breve para confirmar el pedido.
+      </p>
+    </form>
+  </div>
+  
+  
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+<section class="info_section layout_padding2">
+  <div class="container">
+    <div class="row">
+
+
+    <!-- Contacto -->
+    <div class="col-md-6 col-lg-3 info_col">
+      <div class="info_contact">
+        <h4>Contacto</h4>
+        <div class="contact_link_box">
+          <a href="https://maps.app.goo.gl/iGtRkx1CirAWG2kr5" target="_blank">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Juan Martín de Pueyrredón Alderetes Tucumán, Argentina</span>
+          </a>
+          <a href="https://wa.me/+5493815896617" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>+54 9 3815896617</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="info_social mt-3">
+        <a href="https://www.facebook.com/share/15jeUuU1PB/" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/michas_.magic?igsh=MW5vNDgwbmZ6b29jdg==" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/+5493815896617" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="col-md-6 col-lg-3 info_col">
+      <div class="info_link_box">
+        <h4>Enlaces</h4>
+        <div class="info_links">
+          <a href="../index.html">Inicio</a>
+          <a href="shop.html">Tienda</a>
+          <a href="about.html">Sobre nosotros</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desarrollador + Botón -->
+    <div class="col-md-6 col-lg-3 info_col d-flex flex-column justify-content-between">
+      <div>
+        <h4>Desarrollado por</h4>
+        <div class="info_links">
+          <a style="gap: 10px;" href="https://github.com/IvanJ192520" target="_blank">
+            <i class="fab fa-github"></i>
+            <span>Github</span>
+          </a>
+          <a style="gap: 10px;" href="mailto:jivan8764@gmail.com">
+            <i class="fas fa-envelope"></i>
+            <span>jivan8764@gmail.com</span>
+          </a>
+          <a style="gap: 10px;" href="https://www.linkedin.com/in/iván-j-4b825b376" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+  </div>
+</section>
+<!-- end info section -->
+
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <!-- footer section -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <!-- jQery -->
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="../js/custom.js"></script>
+  <!-- Google Map -->
+ 
+  <!-- End Google Map -->
+   <script src="../js/dbshop.js"></script>
+
+    
+
+  
+
+</body>
+
+
+
+</html>

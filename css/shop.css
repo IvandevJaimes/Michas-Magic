@@ -1,0 +1,480 @@
+/* --------------------------- */
+/* 🔎 BUSCADOR + FILTROS AREA */
+/* --------------------------- */
+.buscador-filtros {
+  padding: 18px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  background-color: white;
+ 
+  box-shadow: 0 9px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+
+
+.buscador-filtros input{
+  padding: 12px 16px;
+  padding-right: 20px;
+  border-radius: 60px;
+  border: 1px solid #949494;
+  background-color: #ffffff;
+  font-size: 1rem;
+  min-width: 300px;
+  max-width: 550px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.buscador-filtros input:focus {
+  border:2.3px solid #000000;
+  outline: none;
+  
+}
+
+
+#filtroCategoria{
+ 
+  padding: 12px 16px;
+  padding-right: 20px;
+  border-radius: 60px;
+  border: 1px solid #949494;
+  background-color: #ffffff;
+  font-size: 1rem;
+  min-width: 100px;
+  max-width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  
+}
+.custom-select:focus{
+  border:2.3px solid #000000;
+  
+}
+.optiondiv option{
+  border-radius: 20px;
+}
+.custom-select {
+  position: relative;
+  width: 240px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+}
+
+
+
+.selected {
+  color: #414141;
+  opacity: 75%;
+}
+.options {
+  border: 1px solid black;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  
+  
+  border-radius: 10px;
+  z-index: 99;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option {
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/* --------------------------- */
+/* 🔠 TÍTULOS SECCIONES */
+/* --------------------------- */
+h2 {
+  
+  text-align: center;
+  margin: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #000000;
+  
+  
+}
+
+.tituloseccion{
+  background-color: #bfddff;
+  border-radius: 50px;
+ 
+}
+
+/* --------------------------- */
+/* 🌀 CARROUSEL SCROLLABLE */
+/* --------------------------- */
+.carrousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 14px;
+  padding: 20px;
+  scroll-padding: 30px;
+}
+
+.carrousel::-webkit-scrollbar {
+  height: 9px;
+  background-color: #d5d5ff;
+}
+
+.carrousel::-webkit-scrollbar-thumb {
+  background: #007BFF;
+  border-radius: 20px;
+}
+
+.carrousel > .cardinicioshop {
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+}
+
+/* --------------------------- */
+/* 🔳 CONTENEDORES DE CARDS */
+/* --------------------------- */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  justify-items: center;
+}
+
+/* --------------------------- */
+/* 🧸 TARJETAS DE PRODUCTOS */
+/* --------------------------- */
+.cardinicioshop {
+  width: 100%;
+  max-width: 280px;
+  background-color: #ffffff;
+  border-radius: 20.5px;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+  margin: auto;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  
+}
+
+.cardinicioshop:hover {
+ 
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+.spandisp {
+  position: absolute;
+  bottom: -12px; /* justo debajo de la imagen */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 12px;
+  background-color: rgb(60, 233, 60);
+  border-radius: 50px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  white-space: nowrap;
+}
+.spandisp p {
+  font-size: 13px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  .spandisp {
+    padding: 3px 8px;
+    font-size: 11px;
+    bottom: -10px;
+  }
+
+  .spandisp p {
+    font-size: 11px;
+  }
+}
+
+
+.cardimgshop {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.icardbodyshop {
+
+  text-align: center;
+}
+
+.cardtitleshop {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* 📦 BOTÓN ENCARGAR */
+.vermasshop {
+  padding: 10px 22px;
+  background-color:#00418a;
+  border: none;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.vermasshop:hover {
+  background: #042449;
+  transform: scale(1.06);
+}
+
+/* --------------------------- */
+/* 🎯 RESPONSIVE OPTIMIZADO */
+/* --------------------------- */
+@media (max-width: 600px) {
+  .carrousel {
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .cardinicioshop {
+    width: 160px;
+    height: 308px;
+    font-size: 0.8rem;
+
+  }
+
+  .cardimgshop {
+    height: 160px;
+  }
+
+  .cardtitleshop {
+    font-size: 1rem;
+  }
+
+  .vermasshop {
+    font-size: 0.8rem;
+    padding: 7px 14px;
+  }
+
+  .cardsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    padding: 10px 10px 30px;
+  }
+
+  .buscador-filtros {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+  }
+
+
+
+}
+
+.shopsec {
+  background-color: #ecf5fc;
+  padding-bottom: 250px;
+}
+
+.busqueda-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 320px;
+}
+
+.busqueda-wrapper input {
+  flex: 1;
+}
+
+.busqueda-wrapper button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #666;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+
+}
+
+.spannuevo{
+  padding: 0 auto;
+  color: white;
+  height: 40px;
+  width: 40px;
+  background-color: #007BFF;
+  border-radius: 50px;
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+  display: none;
+  top: 5px;
+  left: 5px;
+  
+  
+  
+}
+.spannuevo h3{
+  font-size: 10px;
+  font-weight: 900;
+  font-weight: bold;
+  padding-top: 5px;
+
+}
+.pantalla-no-resultados {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #ecf5fc;
+  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 300px;
+}
+
+.pantalla-no-resultados img {
+  width: 220px;
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+
+.pantalla-no-resultados h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.pantalla-no-resultados p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Botón grande fijo */
+.pedido-personalizado.fijo {
+  padding: 10px 20px;
+  background-color: #0057b4;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.pedido-personalizado.fijo:hover {
+    background: #042449;
+    transform: scale(5px);
+  
+}
+
+/* Botón flotante */
+.pedido-personalizado.flotante {
+  position: fixed;
+  top: 20px;
+  left: 10px;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background-color: #0057b4;
+  color: white;
+  font-size: 36px;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: 0.3s ease;
+}
+
+.pedido-personalizado.flotante:hover{
+  background: #042449;
+    transform: scale(5px);
+}
+/* Estado oculto (salida con animación) */
+.pedido-personalizado.flotante.hidden {
+  animation: fadeOutScale 0.5s ease forwards;
+  pointer-events: none;
+}
+
+/* Estado visible (entrada con animación) */
+.pedido-personalizado.flotante.show {
+  animation: fadeInScale 0.5s ease forwards;
+}
+
+/* Animación de entrada */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animación de salida */
+@keyframes fadeOutScale {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}

@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+   
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon"href="./Untitled design.png">
+
+  <title> Micha's Magic - Sobre nosotros</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="../css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="../css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="../css/responsive.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../css/components.css">
+
+
+
+</head>
+
+<body class="sub_page">
+
+
+<!-- Pantalla de carga -->
+<div id="pantallaCarga">
+  <div class="loaderContainer">
+    <div class="loader"></div>
+    <p>Cargando...</p>
+  </div>
+</div>
+
+<!-- Pantalla sin conexión -->
+<div id="pantallaSinConexion">
+  <div class="loaderContainer">
+    <img src="./wifi.png" width="80px" height="90px">
+    <p id="mensajeConexion">Sin conexión a Internet</p>
+    <small>Esperando reconexión...</small>
+  </div>
+</div>
+
+<style>
+  #pantallaCarga, #pantallaSinConexion {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: linear-gradient(to bottom right, #cce6ff, #e0f2ff);
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    pointer-events: all !important;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #pantallaSinConexion {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loaderContainer {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .loader {
+    border: 6px solid #b3daff;
+    border-top: 6px solid #0077cc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px auto;
+  }
+
+  #pantallaCarga p,
+  #pantallaSinConexion p {
+    color: #004d80;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  #pantallaSinConexion p {
+    margin-top: 0;
+  }
+
+  #pantallaSinConexion small {
+    color: #004d80;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 600px) {
+    .loader {
+      width: 40px;
+      height: 40px;
+      border-width: 4px;
+    }
+
+    #pantallaCarga p,
+    #pantallaSinConexion p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+  <div class="hero_area">
+
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a href="../index.html">
+            <div class="logo-michas-magic-up">
+              <span>Micha's</span> <span>Magic</span>
+            </div>
+  
+            <style>
+             
+  
+              .logo-michas-magic-up{
+                font-family: sans-serif;
+                font-weight: 800;
+                font-size: 25px;
+                color: #142e97 !important;
+                letter-spacing: 0.10em;
+                display: inline-block;
+                user-select: none;
+              }
+  
+              .logo-michas-magic-up span:last-child {
+                color: #ffffff;
+              }
+  
+              @media (max-width: 510px) {
+                .logo-michas-magic-up{
+                  font-size: 21px;
+                  letter-spacing: 0.10em;
+                }
+              }
+  
+              
+             
+  
+              
+            </style>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link" href="../index.html">Inicio </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"> Sobre nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Tienda</a>
+              </li>
+
+            
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+  </div>
+
+
+
+<!-- about section -->
+
+<section class="about_section layout_padding" style="background-color: #e6f0ff;">
+
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+          <div class="img-box">
+           <img src="./Untitled design.png" alt="" style="border-radius: 25px; box-shadow: 0 6px 12px rgb(159, 159, 159) ;">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box" style="padding: 20px;">
+            
+            <p style="font-size: 17px; color: #333; line-height: 1.8;">
+              Micha’s Magic es un tierno y pequeño emprendimiento que nace del amor por lo hecho a mano. Creamos muñequitos tejidos con la técnica de <strong>amigurumi</strong>, cada uno con una historia, una expresión y un cariño especial en cada punto.
+              <br><br>
+              Actualmente realizamos encargos exclusivamente por <strong>WhatsApp</strong>, donde podés contarnos tu idea, elegir tu personaje favorito y coordinar todos los detalles de forma directa y personalizada.
+              <br><br>
+              No contamos con envíos por el momento, pero trabajamos con responsabilidad y corazón para que cada creación sea única.
+              <br><br>
+              ¡Gracias por apoyar lo artesanal!
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Redes sociales del negocio -->
+    <hr>
+    <div class="text-center mt-4">
+      <h5 style="font-weight: bold; color: #004d99;">Seguinos en nuestras redes</h5>
+      <div style="font-size: 26px; margin-top: 15px;">
+        <a href="https://wa.me/+5493815896617" style="color: #25d366; margin: 0 15px;"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/michas_.magic?igsh=MW5vNDgwbmZ6b29jdg==" style="color: #e1306c; margin: 0 15px;"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/15jeUuU1PB/" style="color: #3b5998; margin: 0 15px;"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+
+    <!-- Información del desarrollador -->
+    <div class="text-center mt-5">
+      <h6 style="color: #666;">Más información del desarrollador acá</h6>
+      <div style="font-size: 22px; margin-top: 10px;">
+        <a href="https://github.com/IvanJ192520" style="color: #333; margin: 0 10px;"><i class="fab fa-github"></i></a>
+        <a href="mailto:jivan8764@gmail.com" style="color: #ea4335; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/iván-j-4b825b376" style="color: #0077b5; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+    <br>
+    <hr>
+  </div>
+  
+</section>
+
+<!-- Sección Ubicación y Contacto con Mapa  -->
+<section class="location_section py-5" style="background-color: #e6f0ff;">
+  <div class="container">
+    <div class="row justify-content-center align-items-center g-4">
+      
+      <!-- Mapa con sombra y borde redondeado -->
+      <div class="col-lg-7 col-md-8">
+        <div class="map-wrapper d-flex align-items-center justify-content-center" style="height: 500px; width: 100%; border-radius: 25px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.234506288355!2d-65.14660732534429!3d-26.832492589855317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9422592ab2843e81%3A0x14b9c4d755bc9fae!2zSnVhbiBNYXJ0w61uIGRlIFB1ZXlycmVkw7NuLCBUdWN1bcOhbg!5e0!3m2!1ses-419!2sar!4v1753838791747!5m2!1ses-419!2sar" 
+            width="100%" 
+            height="100%" 
+            style="border:0; border-radius: 25px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+      
+      <!-- Tarjeta info elegante -->
+      <div class="col-lg-5 col-md-8">
+        <div class="info-card p-4 rounded-4 shadow-lg" style="background: white; border-radius: 25px;">
+          <h3 class="mb-3" style="color: #003366; font-weight: 800; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            Nuestra Ubicación
+          </h3>
+          <p style="color: #555; font-size: 17px; line-height: 1.6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <strong>Dirección:</strong> Juan Martín de Pueyrredón, Alderetes, Tucumán, Argentina<br>
+            <strong>Teléfono:</strong> <a href="tel:+543815896617" style="color:#0073e6; text-decoration:none;">+54 9 381 5896617</a>
+          </p>
+
+          <a href="https://maps.app.goo.gl/iGtRkx1CirAWG2kr5" target="_blank" class="btn btn-primary mt-3" style="font-weight: 700; border-radius: 30px; padding: 12px 30px; font-size: 16px;">
+            Ver en Google Maps <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @media (max-width: 991px) {
+      .map-wrapper {
+        height: 300px !important;
+      }
+    }
+    @media (max-width: 575px) {
+      .map-wrapper {
+        height: 250px !important;
+      }
+      .info-card {
+        text-align: center;
+      }
+      .info-card a.btn {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  </style>
+</section>
+
+
+<div id="alertaFeedback" class="alerta-feedback"></div>
+
+<!-- Formulario de Comentarios o Reportes -->
+<section class="feedback_section py-5" style="background-color: #f4faff;">
+  <div class="container d-flex justify-content-center">
+    <div class="card shadow p-4" style="width: 100%; max-width: 700px; border-radius: 20px;">
+      <div class="text-center mb-4">
+        <h4 style="color: #003366; font-weight: 800;">¿Tenés un comentario o querés reportar un error?</h4>
+        <p style="color: #666;">Tu opinión nos ayuda a mejorar. Completá el formulario y te responderemos pronto.</p>
+      </div>
+      <form>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fas fa-user text-secondary"></i></span>
+              <input type="text" class="form-control" placeholder="Tu nombre" required>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fas fa-envelope text-secondary"></i></span>
+              <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
+            </div>
+          </div>
+          <div class="col-12 mb-3">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fas fa-tag text-secondary"></i></span>
+              <select class="form-select" required>
+                <option value="">Seleccioná el motivo</option>
+                <option value="comentario">Comentario</option>
+                <option value="reporte">Reporte de error</option>
+                <option value="sugerencia">Sugerencia</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 mb-4">
+            <div class="input-group">
+              <span class="input-group-text bg-white"><i class="fas fa-comment-dots text-secondary"></i></span>
+              <textarea class="form-control" rows="5" placeholder="Escribí tu mensaje aquí..." required></textarea>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn" id="enviarBtn" style="background-color: #0073e6; color: white; font-weight: bold; padding: 10px 35px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; gap: 10px; justify-content: center; align-items: center; text-align: center; width: 100%;" >
+             <i class="fas fa-paper-plane me-2" style="margin-right: 10px;"></i> <div id="enviarmensajeBtn">Enviar mensaje</div>
+              <span id="spinnerprocesando" class="btn-envio-spinner hidden" style="display: none;"></span>
+            </button>
+            <style>
+              #enviarBtn:hover {
+                background-color: #06509a !important;
+ 
+                transition: all 0.3s ease;
+              }
+            </style>
+            
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- Sección de Donaciones al Desarrollador -->
+<section class="donation_section py-5" style="background-color: #e0f0ff; border-top: 1px solid #ccc;">
+  <div class="container text-center">
+    <h4 class="mb-3" style="color: #003366; font-weight: 700;">
+      Apoyá al Desarrollador
+    </h4>
+    <p style="max-width: 600px; margin: 0 auto; color: #333;">
+      Si este proyecto te resultó útil o te gustó el trabajo realizado, podés colaborar con una donación. Cada aporte nos permite seguir creando soluciones de calidad, agregar nuevas funciones y mejorar la experiencia para todos.
+    </p>
+
+    <div class="d-flex justify-content-center align-items-center flex-column mt-4">
+      <p class="mb-1 fw-semibold">Alias de cuenta (Naranja X):</p>
+      <div class="d-flex align-items-center gap-2">
+        <span id="aliasText" style="background-color: #fff; padding: 8px 14px; border-radius: 8px; border: 1px solid #999; font-weight: 600;">
+          ivanj.Dev
+        </span>
+        <button onclick="copyAlias()" style="padding: 8px 14px; background-color: #0073e6; color: white; border: none; border-radius: 8px; cursor: pointer;">
+          <i class="fas fa-copy"></i> Copiar
+        </button>
+      </div>
+      <small class="mt-2 text-muted">Podés usar este alias desde Mercado Pago, Ualá, Naranja X u otras billeteras compatibles en Argentina.</small>
+
+      <div id="copyNotification" style="display:none; margin-top: 10px; color: #006400; font-weight: 600;">
+        ¡Alias copiado al portapapeles!
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copyAlias() {
+      const alias = document.getElementById("aliasText").textContent;
+      navigator.clipboard.writeText(alias.trim()).then(() => {
+        const notification = document.getElementById("copyNotification");
+        notification.style.display = "block";
+        setTimeout(() => {
+          notification.style.display = "none";
+        }, 2500);
+      });
+    }
+  </script>
+</section>
+
+
+
+<!-- Asegurate de tener Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+
+
+  <!-- info section -->
+<!-- info section -->
+
+
+
+
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row">
+
+
+      <!-- Contacto -->
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_contact">
+          <h4>Contacto</h4>
+          <div class="contact_link_box">
+            <a href="https://maps.app.goo.gl/iGtRkx1CirAWG2kr5" target="_blank">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Juan Martín de Pueyrredón Alderetes Tucumán, Argentina</span>
+            </a>
+            <a href="https://wa.me/+5493815896617" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+              <span>+54 9 3815896617</span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="info_social mt-3">
+          <a href="https://www.facebook.com/share/15jeUuU1PB/" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/michas_.magic?igsh=MW5vNDgwbmZ6b29jdg==" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/+5493815896617" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <div class="col-md-6 col-lg-3 info_col">
+        <div class="info_link_box">
+          <h4>Enlaces</h4>
+          <div class="info_links">
+            <a href="../index.html">Inicio</a>
+            <a href="shop.html">Tienda</a>
+            <a href="about.html">Sobre nosotros</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desarrollador + Botón -->
+      <div class="col-md-6 col-lg-3 info_col d-flex flex-column justify-content-between">
+        <div>
+          <h4>Desarrollado por</h4>
+          <div class="info_links">
+            <a style="gap: 10px;" href="https://github.com/IvanJ192520" target="_blank">
+              <i class="fab fa-github"></i>
+              <span>Github</span>
+            </a>
+            <a style="gap: 10px;" href="mailto:jivan8764@gmail.com">
+              <i class="fas fa-envelope"></i>
+              <span>jivan8764@gmail.com</span>
+            </a>
+            <a style="gap: 10px;" href="https://www.linkedin.com/in/iván-j-4b825b376" target="_blank">
+              <i class="fab fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+     
+     
+    </div>
+  </section>
+<!-- end info section -->
+
+  
+  <!-- end info section -->
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
+
+  <!-- Tu script (debe venir después) -->
+  <script src="../js/componentsabout.js"></script>
+
+  <!-- jQery -->
+  <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="../js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="../js/custom.js"></script>
+  <!-- Google Map -->
+
+  <!-- End Google Map -->
+
+</body>
+
+</html>
