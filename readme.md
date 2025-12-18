@@ -203,13 +203,6 @@ En el modal del producto:
   - Método de pago
 - Click en **"Encargar por WhatsApp"** o **"Encargar desde la web"**
 
-#### 5. Métodos de Contacto
-- **WhatsApp**: 📱 +54 9 381 5896617
-- **Facebook**: 👍 Micha's Magic
-- **Instagram**: 📸 @michas_.magic
-- **Email**: Para consultas especiales
-
----
 
 ## 📲 Sistema de Pedidos
 
